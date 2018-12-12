@@ -41,10 +41,12 @@ class Mandelbrot(object):
 
 	def do_mandelbrot(self):
 		img = np.zeros((self.width,self.height,3), np.uint8)
+		x_coord = self.min_x - self.x_step
 		for x in range(self.width):
-			x_coord = self.min_x + x*self.x_step
+			x_coord += self.x_step
+			y_coord = self.max_y + self.y_step
 			for y in range(self.height):
-				y_coord = self.min_y + (self.height - y)*self.y_step
+				y_coord -= self.y_step
 				it = self.mandelbrot(x_coord,y_coord)
 				(r,b,g) = (it*8,it*4,it*2)
 				if r > 255:
