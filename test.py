@@ -9,10 +9,10 @@ class Mandelbrot(object):
 		self.max_x = .5
 		self.min_y = -1.25
 		self.max_y = 1.25
-		self.scale = 1.0
+		self.scale = .2
 		self.x_step = (self.max_x - self.min_x)/self.width
 		self.y_step = (self.max_y - self.min_y)/self.height
-		self.max_iter = 100
+		self.max_iter = 1000
 
 	def to_coords(self,x,y):
 		x_coord = self.min_x + x*self.x_step
@@ -48,7 +48,7 @@ class Mandelbrot(object):
 			for y in range(self.height):
 				y_coord -= self.y_step
 				it = self.mandelbrot(x_coord,y_coord)
-				(r,b,g) = (it*8,it*4,it*2)
+				(r,g,b) = (it*8,it*4,it*2)
 				if r > 255:
 					r = 255
 				if g > 255:
